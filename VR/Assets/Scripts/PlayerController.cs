@@ -4,49 +4,68 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Animator playerAnim;
+    Animator animator;
+        
 
     private void Awake()
     {
-        playerAnim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        Debug.Log(animator);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        bool isRunning = animator.GetBool("isRunning");
+        bool forwardPressed = Input.GetKey("w");
+
+        bool isTurningRight = animator.GetBool("isTurningRight");
+        bool rightTurnPressed = Input.GetKey("d");
+
+        bool isJumping = animator.GetBool("isJumping");
+        bool JumpPressed = Input.GetKey("space");
+        //StartRunning
+        if (!isRunning && forwardPressed)
         {
-            print("standing");
-            playerAnim.SetBool("walking", false);
-            playerAnim.SetBool("turnRight", false);
-            playerAnim.SetBool("turnLeft", false);
-            playerAnim.SetBool("jump", false);
-            playerAnim.SetBool("looking", false);
+            animator.SetBool("isRunning", true);
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        //StopRunning
+        if (isRunning && !forwardPressed)
         {
-            print("walking");
-            playerAnim.SetBool("walking", true);
+            animator.SetBool("isRunning", false);
+        }        
+        //StartTurningRight
+        if(rightTurnPressed && !isTurningRight)
+        {
+            animator.SetBool("isTurningRight", true);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        //StopTurningRight
+        if (!rightTurnPressed && isTurningRight)
         {
-            print("Turn Right");
-            playerAnim.SetBool("turnRight", true);
+            animator.SetBool("isTurningRight", false);
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        //StartJumping
+        if (!isJumping && JumpPressed)
         {
-            print("Turn Left");
-            playerAnim.SetBool("turnLeft", true);
+            animator.SetBool("isJumping", true);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        //StopJumping
+        if (isJumping && !JumpPressed)
         {
-            print("Jump");
-            playerAnim.SetBool("jump", true);
+            animator.SetBool("isJumping", false);
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        //StartJumping & StopRunning
+        if (!isJumping && JumpPressed && isRunning && !forwardPressed)
         {
-            print("Looking");
-            playerAnim.SetBool("looking", true);
+            animator.SetBool("isJumping", true);
+            animator.SetBool("isRunning", false);
+
+        }
+        //StopJumping & StartRunning
+        if (isJumping && !JumpPressed && !isRunning && forwardPressed)
+        {
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isRunning", true);
         }
     }
+
 }
