@@ -23,8 +23,6 @@ public class PlayerController : MonoBehaviour
         bool leftTurnPressed = Input.GetKey("a");
         bool isJumping = animator.GetBool("isJumping");
         bool JumpPressed = Input.GetKey("space");
-        bool isWalkingBack = animator.GetBool("isWalkingBack");
-        bool WalkBackPressed = Input.GetKey("s");
         //StartRunning
         if (!isRunning && forwardPressed)
         {
@@ -46,10 +44,16 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isTurningRight", false);
         }
-        //StopRunning & StartTurningRight
+        //StopRunningForward & StartTurningRight
         if (rightTurnPressed && !isTurningRight && isRunning && !forwardPressed)
         {
             animator.SetBool("isTurningRight", true);
+            animator.SetBool("isRunning", true);
+        }
+        //StartRunningForward & StopTurningRight
+        if (!rightTurnPressed && isTurningRight && !isRunning && forwardPressed)
+        {
+            animator.SetBool("isTurningRight", false);
             animator.SetBool("isRunning", true);
         }
 
@@ -63,13 +67,30 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isTurningLeft", false);
         }
-        //StopRunning & StartTurningLeft
+        //StopRunningForward & StartTurningLeft
         if (leftTurnPressed && !isTurningLeft && isRunning && !forwardPressed)
         {
             animator.SetBool("isTurningLeft", true);
             animator.SetBool("isRunning", true);
         }
-
+        //StartRunningForward & StopTurningLeft
+        if (!leftTurnPressed && isTurningLeft && !isRunning && forwardPressed)
+        {
+            animator.SetBool("isTurningLeft", false);
+            animator.SetBool("isRunning", true);
+        }
+        //StartTurningLeft & StopTurningRight
+        if (leftTurnPressed && !isTurningLeft && !rightTurnPressed && isTurningRight)
+        {
+            animator.SetBool("isTurningLeft", true);
+            animator.SetBool("isTurningRight", false);
+        }
+        //StartTurningLeft & StopTurningRight
+        if (!leftTurnPressed && isTurningLeft && rightTurnPressed && !isTurningRight)
+        {
+            animator.SetBool("isTurningLeft", false);
+            animator.SetBool("isTurningRight", true);
+        }
         //StartJumping
         if (!isJumping && JumpPressed)
         {
