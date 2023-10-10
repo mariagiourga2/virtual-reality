@@ -89,7 +89,7 @@ AnimatorStateTransition:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ' StopRunning & StartJumping'
+  m_Name: StartRunningForward & StartJumping
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: isRunning
@@ -125,6 +125,7 @@ AnimatorState:
   - {fileID: -4010956988650822461}
   - {fileID: 8892056712521826902}
   - {fileID: -8318453772383100330}
+  - {fileID: -2835488385992594633}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -178,6 +179,62 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7629482644546294599}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.67391306
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &-2835488385992594633
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: StartTurningRight & StartJumping
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isTurningRight
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isJumping
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 279527942799626063}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.67391306
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &-2655706037460129164
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: StartTurningLeft & StartJumping
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isTurningLeft
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isJumping
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 279527942799626063}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -408,6 +465,7 @@ AnimatorState:
   - {fileID: 4541603206775381879}
   - {fileID: 3877690289375075536}
   - {fileID: -947435489764159411}
+  - {fileID: -2655706037460129164}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -604,13 +662,13 @@ AnimatorStateMachine:
     m_Position: {x: 900, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 279527942799626063}
-    m_Position: {x: 220, y: 280, z: 0}
+    m_Position: {x: 110, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3310362049424254443}
-    m_Position: {x: 560, y: -90, z: 0}
+    m_Position: {x: 350, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5804484996733764127}
-    m_Position: {x: 560, y: 400, z: 0}
+    m_Position: {x: 670, y: 400, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

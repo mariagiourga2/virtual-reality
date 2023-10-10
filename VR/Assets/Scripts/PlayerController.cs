@@ -23,12 +23,12 @@ public class PlayerController : MonoBehaviour
         bool leftTurnPressed = Input.GetKey("a");
         bool isJumping = animator.GetBool("isJumping");
         bool JumpPressed = Input.GetKey("space");
-        //StartRunning
+        //StartRunningForward
         if (!isRunning && forwardPressed)
         {
             animator.SetBool("isRunning", true);
         }
-        //StopRunning
+        //StopRunningForward
         if (isRunning && !forwardPressed)
         {
             animator.SetBool("isRunning", false);
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isTurningLeft", true);
             animator.SetBool("isTurningRight", false);
         }
-        //StartTurningLeft & StopTurningRight
+        //StartTurningRight & StopTurningLeft
         if (!leftTurnPressed && isTurningLeft && rightTurnPressed && !isTurningRight)
         {
             animator.SetBool("isTurningLeft", false);
@@ -101,11 +101,23 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
         }
-        //StopRunning & StartJumping
+        //StartRunningForward & StartJumping
         if (!isJumping && JumpPressed && isRunning && !forwardPressed)
         {
             animator.SetBool("isJumping", true);
             animator.SetBool("isRunning", true);
+        }
+        //StartTurningRight & StartJumping
+        if (rightTurnPressed && !isTurningRight && !isJumping && JumpPressed)
+        {
+            animator.SetBool("isTurningRight", true);
+            animator.SetBool("isJumping", true);
+        }
+        //StartTurningLeft & StartJumping
+        if (leftTurnPressed && !isTurningLeft && !isJumping && JumpPressed)
+        {
+            animator.SetBool("isTurningLeft", true);
+            animator.SetBool("isJumping", true);
         }
     }
 
