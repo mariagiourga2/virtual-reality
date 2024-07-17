@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:VR/Assets/Scripts/NPCInteractable.cs.meta
 guid: e37e0b85d853fa8488b99f22eebc3fe6
 ========
 guid: c66e952b219c5fd42b6db14b001e8a43
 >>>>>>>> parent of 530ed09 (last):VR/Assets/MoveX.cs.meta
+=======
+guid: e37e0b85d853fa8488b99f22eebc3fe6
+>>>>>>> parent of 530ed09 (last)
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
