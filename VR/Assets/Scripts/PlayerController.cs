@@ -5,14 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Animator animator;
-
-
-    public float open = 100f;
-    public float range = 10f;
-
-    public GameObject door;
-    public bool isOpening = false;
-    public Camera fpsCam;
+        
 
     private void Awake()
     {
@@ -22,7 +15,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
         bool isRunning = animator.GetBool("isRunning");
         bool forwardPressed = Input.GetKey("w");
         bool isTurningRight = animator.GetBool("isTurningRight");
